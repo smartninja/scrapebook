@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import logging
 import os
 import jinja2
 import webapp2
@@ -45,8 +46,16 @@ class PersonHandler(BaseHandler):
 
 class CreateNewUsersHandler(BaseHandler):
     def get(self):
+        user = users.get_current_user()
+
+        if not user:
+            return self.redirect(users.create_login_url("/"))
+
         if users.is_current_user_admin():
-            create_fake_persons(person_number=10)
+            result = create_fake_persons(person_number=10)
+            logging.info("Create fake persons: " + str(result))
+        else:
+            logging.info("user is not an admin")
         return self.redirect_to("main")
 
 
