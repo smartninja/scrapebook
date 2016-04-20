@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<p><a href="/"><< Back</a></p>
+
+<h1>{{ person.get_full_name }}</h1>
+
+<ul>
+    <li>Gender: <span data-gender="{{ person.gender }}">{{ person.gender }}</span></li>
+    <li>Age: {{ person.age }}</li>
+    <li>City: {{ person.city }}</li>
+    <li>Email: <span class="email">{{ person.email }}</span></li>
+</ul>
+{% endblock main_content %}

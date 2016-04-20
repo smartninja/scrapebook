@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Age</th>
+        <th>City</th>
+        <th>More</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for person in persons %}
+        <tr>
+          <td>{{ person.first_name }}</td>
+          <td>{{ person.last_name }}</td>
+          <td>{{ person.age }}</td>
+          <td>{{ person.city }}</td>
+          <td><a href="/person/{{ person.get_id }}">See full profile</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock main_content %}
